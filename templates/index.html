@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cải thiện độ phân giải ảnh với CNN</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Cải thiện độ phân giải ảnh bằng CNN</h2>
+        
+        <!-- Thông báo lỗi nếu có -->
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <label for="image">Tải ảnh lên:</label>
+            <input type="file" name="image" required>
+            <button type="submit">Cải thiện ảnh</button>
+        </form>
+        
+        <div class="images">
+            {% if original_img %}
+                <div>
+                    <h3>Ảnh Gốc</h3>
+                    <img src="{{ original_img }}" alt="Ảnh Gốc" width="300">
+                    {% if show_original_info %}
+                        <p><strong>Kích thước gốc:</strong> {{ original_img_size[0] }} x {{ original_img_size[1] }} điểm ảnh</p>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <h3>Ảnh Đã Cải Thiện</h3>
+                    <img src="{{ enhanced_img }}" alt="Ảnh Đã Cải Thiện" width="300">
+                    <p><strong>Kích thước cải thiện:</strong> {{ enhanced_img_size[0] }} x {{ enhanced_img_size[1] }} điểm ảnh</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
